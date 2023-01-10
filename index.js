@@ -1,13 +1,26 @@
-// Turn the variables functions into arrow functions and combine the functions so that the result of the following mathematical operation is printed on the console: ((2 + 4) * (5 + 2) - 2) / 5
+// # Conditionals & Loops - Exercise 4
 
-const sum = (a, b) => a + b;
+// Create a function `sumUntil` that takes in a parameter and retunrs the sum of all numbers ranging from one to the value passed as parameter.
 
-const subtract = (a, b) => a - b;
+// Example:
 
-const multiply = (a, b) => a * b;
+// function sumUntil(maxValue) {
+//  ...
+// }
 
-const divide = (a, b) => Math.floor(a / b);
+// console.log(sumUntil(5)); // OUTPUT: 15
 
-const result = divide(subtract(multiply(sum(2, 4), sum(5, 2)), -2), 5);
+function sumUntil(maxValue) {
+  let sum = 0;
 
-console.log(result);
+  for (let i = 0; i <= maxValue; i++) {
+    sum += i;
+  }
+
+  return sum;
+}
+
+console.log(sumUntil(5)); //15
+console.log(sumUntil(10)); //55
+console.log(sumUntil(14)); //105
+console.log(sumUntil(8)); //36

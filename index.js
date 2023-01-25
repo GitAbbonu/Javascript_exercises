@@ -9,7 +9,6 @@ const person = {
   age: 25,
 };
 
-const [id, personInfo] = [person.id, person];
-delete personInfo.id;
+const { id, ...personInfo } = { ...person };
 
 console.log(id, personInfo);

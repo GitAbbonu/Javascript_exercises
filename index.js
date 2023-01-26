@@ -15,7 +15,7 @@ const developer = new Person(1, "Mario", "Rossi", 25);
 // Print developer as json object
 
 let str = JSON.stringify(developer);
-console.log(str);
+console.log(str); //Sotto forma di stringa
 
 const objJSON = JSON.parse(str);
-console.log(objJSON);
+console.log(objJSON); //Sotto forma di object

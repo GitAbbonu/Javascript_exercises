@@ -14,10 +14,6 @@ function sayHello() {
 
 function repeatHello(callback) {
   const int = setInterval(() => console.log(callback()), 1000);
-
-  setTimeout(() => {
-    clearInterval(int);
-  }, 10000);
 }
 
 repeatHello(sayHello);

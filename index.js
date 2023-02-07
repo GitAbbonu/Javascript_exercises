@@ -11,22 +11,23 @@
 // - To understand how they work, you can try adding `setTimeout` to the promise functions
 
 const isLogged = true;
-const prom1 = new Promise((res, rej) => {
-  setTimeout(() => {
-    if (isLogged) {
-      let randomNum = Math.random();
-      res(randomNum);
-    } else {
-      rej("error, no log in");
-    }
-  }, 2000);
+
+const secondPromise = (num) => {
+  return new Promise((res, rej) => {
+    num > 0.5
+      ? console.log('{ name: "John", age: 24 }')
+      : console.log("no obj");
+  });
+};
+
+new Promise((res, rej) => {
+  if (isLogged) {
+    let randomNum = Math.random();
+    res(randomNum);
+  } else {
+    rej("error, no log in");
+  }
 })
-  .then((randomNum) => {
-    if (randomNum > 0.5) {
-      const obj = { name: "John", age: 24 };
-      console.log(obj);
-    } else {
-      console.log("no obj");
-    }
-  })
-  .catch((err) => console.log("err"));
+  .then((num) => secondPromise(num))
+  .then((res) => console.log(res))
+  .catch((err) => console.log("error"));

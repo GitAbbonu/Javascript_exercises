@@ -14,9 +14,7 @@ const isLogged = true;
 
 const secondPromise = (num) => {
   return new Promise((res, rej) => {
-    num > 0.5
-      ? console.log('{ name: "John", age: 24 }')
-      : console.log("no obj");
+    num > 0.5 ? res('{ name: "John", age: 24 }') : rej("no obj");
   });
 };
 

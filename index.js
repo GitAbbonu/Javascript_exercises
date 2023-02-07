@@ -6,25 +6,24 @@
 
 // - Error documentation: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
 
-const isLogged = false;
+const isLogged = true;
 
-const prom1 = new Promise((res, rej) => {
-  setTimeout(() => {
-    if (isLogged) {
-      let randomNum = Math.random();
-      res(randomNum);
-    } else {
-      rej("error, no log in");
-    }
-  }, 2000);
+const secondPromise = (num) => {
+  return new Promise((res, rej) => {
+    num > 0.5 ? res('{ name: "John", age: 24 }') : rej("no obj");
+  });
+};
+
+new Promise((res, rej) => {
+  if (isLogged) {
+    let randomNum = Math.random();
+    res(randomNum);
+  } else {
+    rej("error, no log in");
+  }
 })
-  .then((randomNum) => {
-    if (randomNum > 0.5) {
-      const obj = { name: "John", age: 24 };
-      console.log(obj);
-    } else {
-      console.error("no obj");
-    }
-  })
-  .catch((err) => console.error(err))
-  .finally(() => console.log("the end"));
+
+  .then((num) => secondPromise(num))
+  .then((res) => console.log(res))
+  .catch((err) => console.error("error"))
+  .finally((res) => console.log("finally is the end"));
